@@ -1,0 +1,25 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Build & Test') { 
+            steps {
+                sh 'export WORKSPACE=`pwd`'
+                // Create/Activate virtualenv
+                sh 'python3 -m venv medilink-venv'
+                sh '. medilink-venv/bin/activate'
+                // Install Requirements
+                sh 'pip install -r requirements.txt'
+                // Run tests
+                sh 'python3 manage.py test'
+            }
+        }
+        stage('Docker Image Build') {
+            steps {
+                sh '''medilink_backend_docker_image=2022cfse502/medilink-backend:$(python3 versioning.py)
+                docker build -t $medilink_backend_docker_image .
+                docker push $medilink_backend_docker_image
+                docker rmi $medilink_backend_docker_image'''
+            }
+        }
+    }
+}

@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    name: backend-deployment
+    app: backend
+  namespace: medilink
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: backend-pod
+      app: backend
+  template:
+    metadata:
+      name: backend-pod
+      labels:
+        name: backend-pod
+        app: backend
+    spec:
+      volumes:
+        - name: nginx-conf
+          configMap:
+            name: nginx-conf-backend
+        - name: staticfiles
+          emptyDir: {}
+      initContainers:
+        - name: collectstatic
+          image: 2022cfse502/medilink-backend:final-demo
+          command: ["python3", "manage.py", "collectstatic", "--no-input"]
+          volumeMounts:
+            - name: staticfiles
+              mountPath: /static/
+              readOnly: false
+      containers:
+        # Backend container
+        - name: backend-server
+          image: 2022cfse502/medilink-backend:final-demo
+          env:
+            - name: PORT
+              value: "8000"
+          ports:
+            - containerPort: 8000
+        # Nginx container
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: staticfiles
+              mountPath: /static/
+              readOnly: true
+            - name: nginx-conf
+              mountPath: /etc/nginx/conf.d
+              readOnly: true
+        

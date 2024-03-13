@@ -1,0 +1,25 @@
+# Using python base image in order to run django 
+FROM python:3.12
+
+# Defining work directory 
+WORKDIR /home/app
+
+# Setting this environment variable so that
+# the stdout and stderr streams are sent straight to terminal
+# Updating pip in order to install all python dependencies 
+ENV PYTHONDONTWRITEBYTECODE 1 
+ENV PYTHONUNBUFFERED 1 
+RUN pip install --upgrade pip 
+
+# Copying all the files from project directory to /home/app
+COPY . . 
+
+# Installing all the dependencies in requirements.txt 
+RUN pip install -r requirements.txt 
+
+# Giving execute access to entrypoint.sh
+RUN chmod +x entrypoint.sh
+
+# Running entrypoint.sh which contains gunicorn command to start django
+CMD [ "./entrypoint.sh" ]
+
