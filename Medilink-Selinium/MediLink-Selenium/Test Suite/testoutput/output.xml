@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-03-13T10:29:21.868112" rpa="false" schemaversion="5">
+<suite id="s1" name="Login" source="D:\Projects\Medilink-Selinium\MediLink-Selenium\Test Suite\Login.robot">
+<kw name="Launch Browser" owner="Commonkeywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:29:22.069887" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:3000/'.</msg>
+<arg>${HOMEPAGE}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-13T10:29:22.069887" elapsed="2.117009"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-03-13T10:29:24.186896" elapsed="0.133028"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>0.5 seconds</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2024-03-13T10:29:24.319924" elapsed="0.000999"/>
+</kw>
+<status status="PASS" start="2024-03-13T10:29:22.068883" elapsed="2.252040"/>
+</kw>
+<test id="s1-t1" name="Login User with Password" line="13">
+<kw name="Login User" owner="Commonkeywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:29:24.321925" level="INFO">Typing text 'gg.gg@gmail.com' into text field '//input[@name='email']'.</msg>
+<arg>//input[@name='email']</arg>
+<arg>${login}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:29:24.320923" elapsed="1.602620"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:29:25.924054" level="INFO">Typing password into text field '//input[@name='password']'.</msg>
+<msg time="2024-03-13T10:29:26.952849" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>//input[@name='password']</arg>
+<arg>${password}</arg>
+<arg>clear=True</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:29:25.923543" elapsed="1.583793"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:29:27.507336" level="INFO">Clicking button 'id:SignIn'.</msg>
+<arg>id:SignIn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:29:27.507336" elapsed="2.550765"/>
+</kw>
+<arg>gg.gg@gmail.com</arg>
+<arg>admin@12345</arg>
+<doc>For user Login</doc>
+<status status="PASS" start="2024-03-13T10:29:24.320923" elapsed="5.737178"/>
+</kw>
+<doc>To check valid Login</doc>
+<tag>MediLink</tag>
+<status status="PASS" start="2024-03-13T10:29:24.320923" elapsed="5.737178"/>
+</test>
+<test id="s1-t2" name="Verify Patient Dashboard" line="17">
+<kw name="Verify patient dashboard" owner="Commonkeywords">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Patient Dashboard</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-03-13T10:29:30.059109" elapsed="1.958084"/>
+</kw>
+<doc>Verify Patient Dashboard</doc>
+<status status="PASS" start="2024-03-13T10:29:30.059109" elapsed="1.958084"/>
+</kw>
+<kw name="Verify Patient details" owner="Commonkeywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:29:32.017718" level="INFO">Clicking element 'id:Patient details'.</msg>
+<arg>id:Patient details</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:29:32.017718" elapsed="1.170829"/>
+</kw>
+<doc>Verify Patient Details</doc>
+<status status="PASS" start="2024-03-13T10:29:32.017718" elapsed="1.170829"/>
+</kw>
+<doc>Verify patient dashboard</doc>
+<tag>MediLink</tag>
+<status status="PASS" start="2024-03-13T10:29:30.059109" elapsed="3.129438"/>
+</test>
+<test id="s1-t3" name="Verify Medicine details" line="23">
+<kw name="Verify patient dashboard" owner="Commonkeywords">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Patient Dashboard</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-03-13T10:29:33.189709" elapsed="0.520684"/>
+</kw>
+<doc>Verify Patient Dashboard</doc>
+<status status="PASS" start="2024-03-13T10:29:33.189709" elapsed="0.520684"/>
+</kw>
+<kw name="Verify Medication details" owner="Commonkeywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:29:33.710393" level="INFO">Clicking element 'id:Medication details'.</msg>
+<arg>id:Medication details</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:29:33.710393" elapsed="1.045123"/>
+</kw>
+<kw name="Table Should Contain" owner="SeleniumLibrary">
+<arg>id:MedicineTable</arg>
+<arg>Paracetamol</arg>
+<doc>Verifies table contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-13T10:29:34.755516" elapsed="10.161594"/>
+</kw>
+<kw name="Table Should Contain" owner="SeleniumLibrary">
+<arg>id:MedicineTable</arg>
+<arg>Naxdom 500</arg>
+<doc>Verifies table contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-13T10:29:44.917110" elapsed="10.140924"/>
+</kw>
+<kw name="Table Should Contain" owner="SeleniumLibrary">
+<arg>id:MedicineTable</arg>
+<arg>Tryptomer 10</arg>
+<doc>Verifies table contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-13T10:29:55.058034" elapsed="10.141937"/>
+</kw>
+<doc>Medication details of Patient</doc>
+<status status="PASS" start="2024-03-13T10:29:33.710393" elapsed="31.489578"/>
+</kw>
+<doc>Verify the patient medicines</doc>
+<tag>MediLink</tag>
+<status status="PASS" start="2024-03-13T10:29:33.188547" elapsed="32.011424"/>
+</test>
+<test id="s1-t4" name="Verify Precautions" line="29">
+<kw name="Verify Precautions" owner="Commonkeywords">
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>id:Precautions</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2024-03-13T10:30:05.201301" elapsed="1.291786"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:30:06.493592" level="INFO">Clicking element 'id:Precautions'.</msg>
+<arg>id:Precautions</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:30:06.493087" elapsed="1.038457"/>
+</kw>
+<doc>Patient Precautions</doc>
+<status status="PASS" start="2024-03-13T10:30:05.201301" elapsed="2.330243"/>
+</kw>
+<doc>Verify Precaution for Patients</doc>
+<tag>MediLink</tag>
+<status status="PASS" start="2024-03-13T10:30:05.199971" elapsed="2.331573"/>
+</test>
+<test id="s1-t5" name="Verify Past Medical records" line="33">
+<kw name="Verify Past medical records" owner="Commonkeywords">
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>id:Past Medical records</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2024-03-13T10:30:07.532877" elapsed="1.282955"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:30:08.815832" level="INFO">Clicking element 'id:Past Medical records'.</msg>
+<arg>id:Past Medical records</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:30:08.815832" elapsed="1.033528"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:30:09.849360" level="INFO">Sending D:\Projects\Medilink-Selinium\MediLink-Selenium\Test Suite\String to JSON data.pdf to browser.</msg>
+<arg>id:uploadDocuments</arg>
+<arg>${FilePath}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:30:09.849360" elapsed="1.024992"/>
+</kw>
+<doc>For past medical records</doc>
+<status status="PASS" start="2024-03-13T10:30:07.532877" elapsed="3.341475"/>
+</kw>
+<doc>Patient Past medical records</doc>
+<tag>MediLink</tag>
+<status status="PASS" start="2024-03-13T10:30:07.532877" elapsed="3.341475"/>
+</test>
+<test id="s1-t6" name="Verify Patient Graphs" line="37">
+<kw name="Verify Graphs" owner="Commonkeywords">
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>id:Graphs</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2024-03-13T10:30:10.875854" elapsed="1.282494"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:30:12.158853" level="INFO">Clicking element 'id:Graphs'.</msg>
+<arg>id:Graphs</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:30:12.158348" elapsed="1.032540"/>
+</kw>
+<doc>Graph Data of Patient</doc>
+<status status="PASS" start="2024-03-13T10:30:10.875854" elapsed="2.315034"/>
+</kw>
+<doc>Graphs for Patient</doc>
+<tag>MediLink</tag>
+<status status="PASS" start="2024-03-13T10:30:10.874352" elapsed="2.316536"/>
+</test>
+<test id="s1-t7" name="Verify Patient Medical Claim" line="41">
+<kw name="Verify Medical Claims" owner="Commonkeywords">
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>id:MedicalClaims</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2024-03-13T10:30:13.191895" elapsed="1.283694"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:30:14.475589" level="INFO">Clicking element 'id:MedicalClaims'.</msg>
+<arg>id:MedicalClaims</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:30:14.475589" elapsed="1.031244"/>
+</kw>
+<doc>Medical claims of Patient</doc>
+<status status="PASS" start="2024-03-13T10:30:13.191895" elapsed="2.314938"/>
+</kw>
+<doc>Patient medical claims</doc>
+<tag>MediLink</tag>
+<status status="PASS" start="2024-03-13T10:30:13.191895" elapsed="2.314938"/>
+</test>
+<test id="s1-t8" name="Submit Patient Medical Claims" line="45">
+<kw name="Submit Claims" owner="Commonkeywords">
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>id:SubmitClaims</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2024-03-13T10:30:15.507840" elapsed="1.282564"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:30:16.790404" level="INFO">Clicking element 'id:SubmitClaims'.</msg>
+<arg>id:SubmitClaims</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:30:16.790404" elapsed="1.032989"/>
+</kw>
+<doc>Submit claims by Patient</doc>
+<status status="PASS" start="2024-03-13T10:30:15.507840" elapsed="2.315553"/>
+</kw>
+<doc>Patient submitted medical claim details</doc>
+<tag>MediLink</tag>
+<status status="PASS" start="2024-03-13T10:30:15.507840" elapsed="2.316066"/>
+</test>
+<test id="s1-t9" name="Patient pending Medical Claims" line="49">
+<kw name="Pending Claims" owner="Commonkeywords">
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>id:PendingClaim</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2024-03-13T10:30:17.824913" elapsed="1.283205"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-03-13T10:30:19.108118" level="INFO">Clicking element 'id:PendingClaim'.</msg>
+<arg>id:PendingClaim</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-13T10:30:19.108118" elapsed="1.033118"/>
+</kw>
+<doc>Pending claims by Patient</doc>
+<status status="PASS" start="2024-03-13T10:30:17.824913" elapsed="2.316323"/>
+</kw>
+<doc>Patient pending medical claim details</doc>
+<tag>MediLink</tag>
+<status status="PASS" start="2024-03-13T10:30:17.823906" elapsed="2.317330"/>
+</test>
+<kw name="Close Test" owner="Commonkeywords" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2024-03-13T10:30:20.142633" elapsed="2.568746"/>
+</kw>
+<status status="PASS" start="2024-03-13T10:30:20.142633" elapsed="2.568746"/>
+</kw>
+<doc>A test suite for valid login.
+
+Keywords are imported from the resource file</doc>
+<status status="PASS" start="2024-03-13T10:29:21.869113" elapsed="60.842266"/>
+</suite>
+<statistics>
+<total>
+<stat pass="9" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="9" fail="0" skip="0">MediLink</stat>
+</tag>
+<suite>
+<stat pass="9" fail="0" skip="0" id="s1" name="Login">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

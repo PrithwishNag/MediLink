@@ -1,0 +1,19 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Build & Test') { 
+            steps {
+                sh 'npm install'
+                sh 'npm test'
+            }
+        }
+        stage('Docker Image Build') {
+            steps {
+                sh '''medilink_frontend_docker_image=2022cfse502/medilink-frontend:$(python3 versioning.py)
+                docker build -t $medilink_frontend_docker_image .
+                docker push $medilink_frontend_docker_image
+                docker rmi $medilink_frontend_docker_image'''
+            }
+        }
+    }
+}
